@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
   	<router-link to="/"></router-link>
-=======
->>>>>>> 63d2f9505ed562254a1ff9487265999a7ce94e66
     <router-view/>
   </div>
 </template>
