@@ -30,7 +30,7 @@ export default{
                 var f = ev.target.files[0]
                 var d = new FormData;
                 d.append('img',f);
-                this.$http.post('http://localhost:8080/files/fill',d,{
+                this.$http.post('fileee/file',d,{
                     headers:'multipart/form-data'
                 }).then((data)=>{
                     console.log(data)
