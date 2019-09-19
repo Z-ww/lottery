@@ -25,31 +25,146 @@
         <div class="playing" @click="btn2()">玩法： {{lottery}} ✓</div>
         <div class="list" v-if="type">
           <div v-for="(i,index) in arr" @mouseover="num=index" :class="[num==index? 'col':'']" @mouseout="num=8"
-               @click="btn1(index)" :key="i">{{i}}
+               @click="btn1(index)">{{i}}
           </div>
         </div>
       </div>
 
       <div class="game">
         <div class="play_game">
-          <div class="showBox">
+
+          <!--                                 和值-->
+          <div class="showBox" v-if="lottery=='和值'">
             <div class="count clearfix">
               <p>和值</p>
               <div class="jiao"></div>
               <p>猜中奖号码相加的和</p>
             </div>
             <div class="show-game">
-              <button v-for="(i,index) in count" :key="i+index">
+              <button v-for="(i,index) in count">
                 <div>
 
                   <span> {{i.figure}}<br>奖励{{i.award}}积分</span>
                 </div>
               </button>
-              {{count_num}}
             </div>
           </div>
+
+          <!--                                三同号-->
+
+          <div class="showBox" v-if="lottery=='三同号'">
+            <div class="count clearfix">
+              <p>三同号</p>
+              <div class="jiao"></div>
+              <p>猜中豹子号 (三个响同号)</p>
+            </div>
+            <div class="show-game">
+              <button v-for="(i,index) in threenot">
+                <div>
+                  <span> {{i.figure}}<br>奖励{{i.award}}积分</span>
+                </div>
+              </button>
+            </div>
+            <div class="count clearfix">
+              <p>三同号通选</p>
+              <div class="jiao"></div>
+              <p>猜中豹子号 (三个响同号)</p>
+            </div>
+            <div class="show-game">
+              <button v-for="(i,index) in threeall" class="one">
+                <div>
+                  <span> {{i.figure}}<br>任意一个豹子号开出即中{{i.award}}积分</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!--                          二同号-->
+
+          <div class="showBox" v-if="lottery=='二同号'">
+            <div class="count clearfix">
+              <p>二同号单选</p>
+              <div class="jiao"></div>
+              <p>选择同号和不同号的组合，奖励80积分</p>
+            </div>
+            <div class="show-game">
+              <p>同号</p>
+              <button v-for="(i,index) in twoRadio" v-if="index<6">
+                <div>
+                  <span> {{i.figure}}</span>
+                </div>
+              </button>
+            </div>
+            <div class="show-game">
+              <p>不同号</p>
+              <button v-for="(i,index) in twoRadio" v-if="index>=6">
+                <div>
+                  <span> {{i.figure}}</span>
+                </div>
+              </button>
+            </div>
+            <div class="count clearfix">
+              <p>二同号复选</p>
+              <div class="jiao"></div>
+              <p>猜开奖中的2个指定的相同号码，奖励15积分</p>
+            </div>
+            <div class="show-game">
+              <button v-for="(i,index) in twoall">
+                <div>
+                  <span> {{i.figure}}</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!--                                三不同-->
+          <div class="showBox" v-if="lottery=='三不同'">
+            <div class="count clearfix">
+              <p>三不同号</p>
+              <div class="jiao"></div>
+              <p>猜开奖的三个不同号码，奖励40积分</p>
+            </div>
+            <div class="show-game">
+              <button v-for="(i,index) in threedifflt">
+                <div>
+                  <span> {{i.figure}}<br></span>
+                </div>
+              </button>
+            </div>
+            <div class="count clearfix">
+              <p>三连号</p>
+              <div class="jiao"></div>
+              <p>123,234,345,456，任一开出即中10积分</p>
+            </div>
+            <div class="show-game">
+              <button v-for="(i,index) in threemark" class="one">
+                <div>
+                  <span> {{i.figure}}<br>任意一个豹子号开出即中{{i.award}}积分</span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <!--                                  二不同-->
+
+          <div class="showBox" v-if="lottery=='二不同'">
+            <div class="count clearfix">
+              <p>二不同号</p>
+              <div class="jiao"></div>
+              <p>猜开奖中的2个指定的不同号码，奖励8积分</p>
+            </div>
+            <div class="show-game">
+              <button v-for="(i,index) in twodifilt">
+                <div>
+
+                  <span> {{i.figure}}</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
+      <div style="height: 60px;"></div>
       <footer class="clearfix">
         <div class="left">
           <p>共0注 <span>0模拟金</span></p>
@@ -62,17 +177,19 @@
 </template>
 
 <script>
-  import HelloWorld from "../components/HelloWorld"
+    import HelloWorld from "../components/HelloWorld"
+
     export default {
-      components:{
-          HelloWorld
-      },
+        components: {
+            HelloWorld
+        },
         data() {
             return {
                 arr: ['和值', '三同号', '二同号', '三不同', '二不同'],
                 num: 8,
                 lottery: '和值',
                 type: false,
+                // 和值
                 count: [
                     {figure: 4, award: '40'},
                     {figure: 5, award: '40'},
@@ -89,7 +206,66 @@
                     {figure: 16, award: '80'},
                     {figure: 17, award: '80'},
                 ],
-                count_num:[],
+                count_num: [],
+                // 三同号
+                threenot: [
+                    {figure: 111, award: '240'},
+                    {figure: 222, award: '240'},
+                    {figure: 333, award: '240'},
+                    {figure: 444, award: '240'},
+                    {figure: 555, award: '240'},
+                    {figure: 666, award: '240'},
+                ],
+                threeall: [
+                    {figure: '三同号通选', award: '40'},
+                ],
+
+                // 二同号
+                twoRadio: [
+                    {figure: 11, award: '80'},
+                    {figure: 22, award: '80'},
+                    {figure: 33, award: '80'},
+                    {figure: 44, award: '80'},
+                    {figure: 55, award: '80'},
+                    {figure: 66, award: '80'},
+                    {figure: 1, award: '80'},
+                    {figure: 2, award: '80'},
+                    {figure: 3, award: '80'},
+                    {figure: 4, award: '80'},
+                    {figure: 5, award: '80'},
+                    {figure: 6, award: '80'},
+                ],
+                twoall: [
+                    {figure: '11*', award: '15'},
+                    {figure: '22*', award: '15'},
+                    {figure: '33*', award: '15'},
+                    {figure: '44*', award: '15'},
+                    {figure: '55*', award: '15'},
+                    {figure: '66*', award: '15'},
+                ],
+                // 三不同
+                threedifflt: [
+                    {figure: 1, award: '80'},
+                    {figure: 2, award: '80'},
+                    {figure: 3, award: '80'},
+                    {figure: 4, award: '80'},
+                    {figure: 5, award: '80'},
+                    {figure: 6, award: '80'},
+                ],
+                threemark: [
+                    {figure: '三连号通选', award: '10'},
+                ],
+
+                // 二不同
+
+                twodifilt: [
+                    {figure: 1, award: '8'},
+                    {figure: 2, award: '8'},
+                    {figure: 3, award: '8'},
+                    {figure: 4, award: '8'},
+                    {figure: 5, award: '8'},
+                    {figure: 6, award: '8'},
+                ]
             }
         },
         methods: {
@@ -103,22 +279,22 @@
         }
     }
 
-    var Game=document.querySelectorAll('.show-game button')
-  console.log(Game)
-  Game.onclick=function(){
+    var Game = document.querySelectorAll('.show-game button')
+    console.log(Game)
+    Game.onclick = function () {
         alert('1')
-  }
+    }
 </script>
 
-<style scoped>
-  #game {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
+<style>
+  .clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
   }
-
+  #app{
+    background-color: #077552;
+  }
   header {
     width: 100%;
     height: 110px;
@@ -213,9 +389,9 @@
 
   .game {
     width: 100%;
-    height: 900px;
+    padding: 0 20px 0;
+    box-sizing: border-box;
   }
-
   footer {
     width: 100%;
     height: 65px;
@@ -254,10 +430,6 @@
     line-height: 60px;
   }
 
-  .game {
-    padding: 0 20px 0;
-  }
-
   .play_game {
     width: 100%;
   }
@@ -278,37 +450,50 @@
     margin-right: 30px;
   }
 
-  .jiao {
-    width: 0;
-    height: 0;
-    border-top: 18px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 20px solid #169967;
-    position: absolute;
-    left: 48px;
-    top: 0;
-  }
+  /*.jiao {*/
+  /*  width: 0;*/
+  /*  height: 0;*/
+  /*  border-top: 18px solid transparent;*/
+  /*  border-bottom: 15px solid transparent;*/
+  /*  border-left: 20px solid #169967;*/
+  /*  position: absolute;*/
+  /*  left: 48px;*/
+  /*  top: 0;*/
+  /*}*/
 
   .count p:nth-of-type(2) {
     font-size: 20px;
     line-height: 33px;
     color: #169967;
+    float: left;
   }
 
   .show-game {
-    margin: 0 15%;
+    margin: 0 10%;
     text-align: center;
   }
-  .show-game button{
-    padding: 0 8px;
-    height: 50px;
+
+  .show-game p {
+    font-size: 20px;
+    color: #7bd6b6;
+    margin: 5px 0;
+  }
+
+  .show-game button {
+    width: 130px;
+    height: 60px;
     background-color: #08533c;
     outline: none;
     margin: 10px;
     border: solid 3px #229474;
-    color:#fff;
+    color: #fff;
   }
-  .show-game button>div{
+
+  .show-game button > div {
     margin: 0 3px;
+  }
+
+  .one {
+    width: 100% !important;
   }
 </style>

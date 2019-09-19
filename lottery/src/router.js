@@ -30,6 +30,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/login.vue')
     },
     {
+<<<<<<< HEAD
       path: '/help',
       name: 'help',
       // route level code-splitting
@@ -37,5 +38,16 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/help.vue')
     }
+=======
+      path: '/game',
+      name: 'game',
+      component: () => import(/* webpackChunkName: "about" */ './views/game.vue')
+    },
+    {
+      path: '/he',
+      name: 'he',
+      component: () => import(/* webpackChunkName: "about" */ './views/he.vue')
+    },
+>>>>>>> 034565712193e95a92966f0dbe02e2c1240e02fc
   ]
 })
