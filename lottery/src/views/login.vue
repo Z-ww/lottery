@@ -1,7 +1,7 @@
 <template>
     <div class="login clearfix">
         <h2>登陆</h2>
-        <div class="lo_big">
+        <div class="lo_big"> 
             <div class="lo_hed">
                 <!-- <img src="" alt=""> -->
                 <input type="file" class="fils" @change="filee($event)">
