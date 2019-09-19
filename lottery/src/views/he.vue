@@ -10,6 +10,7 @@
 				<div>注NaN模拟金</div>
 			</div>
 		</div>
+
 			<div class="side"></div>
 		<div class="foor">
 			<div class="foor-left">共计8注</div>
@@ -28,7 +29,7 @@
 
 </template>
 <script>
-	
+
 	export default {
 		name: 'help',
 		data() {
@@ -58,9 +59,9 @@
 					this.as = this.s
 				},100)
 			}
-			
+
 		}
-		
+
 	}
 </script>
 <style>
@@ -68,7 +69,7 @@
 		margin: 0;
 		padding: 0;
 	}
-	
+
 	.sss{
 		position:absolute;
 		top:50%;
@@ -91,7 +92,7 @@
 		left: 0px;
 		background:rgba(0,0,0,.5);
 	}
-	
+
 	.foor{
 		width:100%;
 		position: fixed;
@@ -115,7 +116,7 @@
 		padding:20px;
 		box-sizing: border-box;
 	}
-	
+
 	.application {
 		text-align: left;
 		margin: 0 auto;
@@ -125,18 +126,18 @@
 		padding: 5px 10px;
 		position: relative;
 	}
-	
+
 	.btn {
 		padding: 5px;
 		color: #3190E8;
 		border: 1px solid #3190E8;
 		background: #FFECEC;
 	}
-	
+
 	.btn1 {
 		border-style: none;
 	}
-	
+
 	.printer {
 		height: 16px;
 		width: 100%;
@@ -145,14 +146,14 @@
 		position: relative;
 		background-repeat: repeat-x;
 	}
-	
+
 	:after,
 	:before {
 		text-decoration: inherit;
 		vertical-align: inherit;
 		box-sizing: inherit
 	}
-	
+
 	.printer:after,
 	.printer:before {
 		content: "";
@@ -164,19 +165,19 @@
 		background-size: auto 100%;
 		background-repeat: no-repeat;
 	}
-	
+
 	.printer:before {
 		left: 0;
 		background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAAoABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9wNRvGRliiG6V+ntUlt4MF6u66/eM3fpUnhSz+33s1w3zbmwv0rrFRbaPJwFA5NAHK/8ACurT/nn+tFaz+MNNRypuI8qcHmigDhNO+J3/AAitusf2TzNvfdjNSav8YLjxHo00Nva+RJJ+7Uhs8msDxhpjQXsi44z8v0qn4bh3XEaH/norflQBTbwpqTNkxyZPJ5or26GyUwr8q9B2ooA5nxFoa6tb5X/WL0965i00prDVI/MXa28CiigD12CAeQn+6KKKKAP/2Q==);
 	}
-	
+
 	.printer:after {
 		right: 0;
 		background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAAoABADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9xbjwWtiu61HlsPxzUWnXjNI0MwxKn61taN4z03xK/l2s6yNjoRis3xXZ/Y7qG4T5drfN9KAPKbGebw7q0cyFleFwSAa7bVfiK2vW5tza7Sy/e3Vyl9am51WRAP4+a09CsTd6soXlQQD9BQBYltGnvpo4I/nZjk5610PhzQ/7Jh3NjzG6+1FFAH//2Q==);
 		background-position: 100%;
 	}
 	/*.paper{border-top:1px solid;margin: 0 6px;background:#fff;box-sizing:border-box;line-height: 24px;}*/
-	
+
 	.paper {
 		display: flex;
 		margin: 0 6px;
@@ -184,7 +185,7 @@
 		box-sizing: border-box;
 		line-height: 40px;
 	}
-	
+
 	.side {
 		margin: 0 6px;
 		height: 5px;

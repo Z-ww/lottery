@@ -164,6 +164,7 @@
 
         </div>
       </div>
+      <div style="height: 60px;"></div>
       <footer class="clearfix">
         <div class="left">
           <p>共0注 <span>0模拟金</span></p>
@@ -285,21 +286,15 @@
     }
 </script>
 
-<style scoped>
+<style>
   .clearfix:after {
     content: '';
     display: block;
     clear: both;
   }
-
-  #game {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
+  #app{
+    background-color: #077552;
   }
-
   header {
     width: 100%;
     height: 110px;
@@ -394,9 +389,9 @@
 
   .game {
     width: 100%;
-    height: 2000px;
+    padding: 0 20px 0;
+    box-sizing: border-box;
   }
-
   footer {
     width: 100%;
     height: 65px;
@@ -433,10 +428,6 @@
     height: 100%;
     color: #fff;
     line-height: 60px;
-  }
-
-  .game {
-    padding: 0 20px 0;
   }
 
   .play_game {
