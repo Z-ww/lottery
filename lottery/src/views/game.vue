@@ -25,7 +25,7 @@
         <div class="playing" @click="btn2()">玩法： {{lottery}} ✓</div>
         <div class="list" v-if="type">
           <div v-for="(i,index) in arr" @mouseover="num=index" :class="[num==index? 'col':'']" @mouseout="num=8"
-               @click="btn1(index)">{{i}}
+               @click="btn1(index)" :key="i">{{i}}
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@
               <p>猜中奖号码相加的和</p>
             </div>
             <div class="show-game">
-              <button v-for="(i,index) in count"">
+              <button v-for="(i,index) in count" :key="i+index">
                 <div>
 
                   <span> {{i.figure}}<br>奖励{{i.award}}积分</span>
