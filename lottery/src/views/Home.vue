@@ -21,7 +21,7 @@
             </div>
            </div>
            <div v-show="!log_ty" class="log_int">
-              <p>您还未 <router-link to="/login">注册/登陆！</router-link> </p>
+              <p style="line-height: 128px;">您还未 <router-link to="/login">注册/登陆！</router-link> </p>
            </div>
         </div>
         <div class="hd_bo clearfix">
