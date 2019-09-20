@@ -27,4 +27,8 @@ html,body{
 a{
   text-decoration: none
 }
+h2{
+  font-size:40px !important;
+  font-weight: bold !important;
+}
 </style>

@@ -16,7 +16,6 @@ const router = express.Router();
 router.use(multer({dest:'./public/images'}).any())
 router.post('/file',function(req,res){
 	var file = req.files[0];
-	console.log(file)
 	var oldname = file.filename;
 	var newname = oldname+path.parse(file.originalname).ext;
 	fs.renameSync('./public/images/'+oldname,'./public/images/'+newname)
