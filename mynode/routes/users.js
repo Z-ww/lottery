@@ -4,7 +4,7 @@ var fs = require('fs');
 //登录
 router.post('/usee', function(req, res) {
   var js = req.body;
-  console.log(js)
+  
   var key_type = true;
   for(var key in js){
     if(js[key] == ''){
@@ -12,6 +12,8 @@ router.post('/usee', function(req, res) {
     }
   }
   if(key_type){
+    js.mouny = 1000;
+    js.bo_inte = 0;
     var vip = eval(fs.readFileSync('./login.txt','utf8'))
     var vip_type=true;
     for(var i = 0;i<vip.length;i++){
@@ -21,10 +23,12 @@ router.post('/usee', function(req, res) {
     }
     if(vip_type){
       vip.push(js)
+      console.log(js)
       fs.writeFileSync('./login.txt',JSON.stringify(vip),'utf8');
       res.send({type:'1',data:js})
     }else{
       res.send({type:'2',data:js})
+      console.log(js)
     }
   }else{
     res.send({type:'0',data:'参数缺失'})

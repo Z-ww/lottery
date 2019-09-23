@@ -48,6 +48,7 @@ export default{
             lo_btn(){
                 this.$http.post('logg/usee',this.log,{emulateJSON:true}).then((data)=>{
                     var datas = data.data
+                    console.log(data)
                     if(datas.type == '1' || datas.type == '2'){
                          localStorage.uid = JSON.stringify(datas.data);
                        this.$router.push({path:'/'})

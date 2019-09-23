@@ -21,10 +21,8 @@ https.get('https://kuai3.cjcp.com.cn/beijing/', res => {
   })
   res.on('end', function () {
     var $ = cheerio.load(html)
-    
     $('#kjinfos1 tr').each(function (index, el) {
       var el = $(el);
-      
       if (el.find('td').eq(1).text() == "-") return;
       file.push({
         issue: el.find('td').eq(0).text(),  //期号

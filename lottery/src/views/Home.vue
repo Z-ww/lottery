@@ -120,6 +120,8 @@ export default {
               this.log.name = JSON.parse(localStorage.uid).name
               this.log_ty = true;
               this.mo_log.user = JSON.parse(localStorage.uid).user
+              this.bo_money = JSON.parse(localStorage.uid).mouny;
+              this.bo_inte = JSON.parse(localStorage.uid).bo_inte
             }else{
               this.log_ty = false;
               this.bo_money = '---'
