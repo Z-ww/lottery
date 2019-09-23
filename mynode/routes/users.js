@@ -6,11 +6,11 @@ router.post('/usee', function(req, res) {
   var js = req.body;
   console.log(js)
   var key_type = true;
-  // for(var key in js){
-  //   if(js[key] == ''){
-  //     key_type = false;
-  //   }
-  // }
+  for(var key in js){
+    if(js[key] == ''){
+      key_type = false;
+    }
+  }
   if(key_type){
     var vip = eval(fs.readFileSync('./login.txt','utf8'))
     var vip_type=true;
@@ -34,11 +34,11 @@ router.post('/usee', function(req, res) {
 router.post('/modu',function(req,res){
   var js = req.body;
   var vip = eval(fs.readFileSync('./login.txt','utf8'))
-  // for(var i = 0;i<vip.length;i++){
-  //   if(js.user == vip[i].user){
-  //     console.log(vip[i])
-  //   }
-  // }
+  for(var i = 0;i<vip.length;i++){
+    if(js.user == vip[i].user){
+      console.log(vip[i])
+    }
+  }
   var indexs = '';
   vip.map(function(item,index){
     if(item.user == js.user){

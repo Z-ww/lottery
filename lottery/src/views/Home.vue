@@ -73,6 +73,11 @@ export default {
   name: 'home',
   components: {
   },
+ mounted(){
+            this.$http.get('txtss/textt').then((data)=>{
+      console.log(data)
+    })
+      },
   data(){
     return {
       //显示隐藏退出登录
