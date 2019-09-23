@@ -158,13 +158,19 @@ export default {
             lo_btn(){
                 this.$http.post('logg/modu',this.mo_log,{emulateJSON:true}).then((data)=>{
                       console.log(data)
-                      localStorage.uid = JSON.stringify(data.data.data)
+                      if(data.data.type == 0){
+                           localStorage.uid = JSON.stringify(data.data.data)
                       console.log(data.data.data.name)
                       this.mo_log.img = data.data.data.img;
                       this.mo_log.name = data.data.data.name;
                       this.mo_log.user = data.data.data.user
                       console.log(this.mo_log.name);
-                      window.location.reload()
+                       window.location.reload()
+                      }else{
+                        alert('参数缺失')
+                      }
+                     
+                      //
                 })
             }
   }
