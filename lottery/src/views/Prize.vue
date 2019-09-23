@@ -86,6 +86,9 @@ export default {
 }
 </script>
 <style>
+    p{
+        margin: 0;
+    }
     .prize{
         width: 100%;
         height: 100%;
