@@ -1,7 +1,9 @@
 <template>
 
 	<div class="application">
-		<button class="btn1" @click="btn1"><div class="btn"> + 继续选号</div></button>
+		<router-link to='game'>
+			<button class="btn1" @click="btn1"><div class="btn"> + 继续选号</div></button>
+		</router-link>
 		<div class="printer"></div>
 		<div class="paper">
 			<div style="width:10%;text-align: center;" @click="btn">删除</div>

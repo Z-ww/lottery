@@ -27,7 +27,7 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/login.vue')
+      component: () => import(/* webpackChunkName: "login" */ './views/login.vue')
     },
     {
       path: '/help',
@@ -35,17 +35,21 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/help.vue')
+      component: () => import(/* webpackChunkName: "help" */ './views/help.vue')
     },
     {
       path: '/game',
       name: 'game',
-      component: () => import(/* webpackChunkName: "about" */ './views/game.vue')
+      component: () => import(/* webpackChunkName: "game" */ './views/game.vue')
     },
     {
       path: '/he',
       name: 'he',
-      component: () => import(/* webpackChunkName: "about" */ './views/he.vue')
-    },
+      component: () => import(/* webpackChunkName: "he" */ './views/he.vue')
+    }, {
+      path: '/Prize',
+      name: 'Prize',
+      component: () => import(/* webpackChunkName: "Prize" */ './views/Prize.vue')
+    }
   ]
 })
