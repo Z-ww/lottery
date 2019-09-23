@@ -25,16 +25,30 @@
            </div>
         </div>
         <div class="hd_bo clearfix">
-            <div class="bo_money"> <span>{{bo_money}}</span> 模拟金</div>
-            <div class="bo_inte"> <span>{{bo_inte}}</span> 兑换</div>
+        	<router-link to='Prize'style="color: white;">
+        		<div class="bo_money"> <span>{{bo_money}}</span> 模拟金</div>
+        	</router-link>
+            
+            <router-link to='Prize' style="color: white;">
+            	<div class="bo_inte"> <span >{{bo_inte}}</span> 兑换</div>
+            </router-link>
         </div>
         
     </div>
     <div class="ho_three">
-        <div v-for="(i,index) in three" :key="i+index">
+    	<!--http://haoxg.xyz/lottery/img/happyk3.ea0489f1.png-->
+    	 <div>
+            <router-link to='game'>
+            	  <div class="ho_in">
+                <img src="http://haoxg.xyz/lottery/img/happyk3.ea0489f1.png" alt="">
+                <p>河北快3</p>
+              </div>
+            </router-link>
+        </div>
+        <div v-for="(i,index) in 8" :key="index">
               <div class="ho_in">
-                <img :src="i.icon" alt="">
-                <p>{{i.name}}</p>
+                <img src="http://haoxg.xyz/lottery/img/k31.f388457f.jpg" alt="">
+                <p>河北快3</p>
               </div>
         </div>
     </div>
@@ -46,7 +60,6 @@
         <div class="lo_big">
             <div class="lo_hed">
               <img :src="mo_log.img" alt="">
-                
                 <input type="file" class="fils" @change="filee($event)">
             </div>
              
@@ -92,21 +105,7 @@ export default {
       tim_num:0, //事件
       tim_txt:'', //早中晚
       log_ty:false, 
-      three:[
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-          {icon:'http://haoxg.xyz/lottery/img/k31.f388457f.jpg',name:'河北快3'},
-      ]
+    
     }
   },
   created(){

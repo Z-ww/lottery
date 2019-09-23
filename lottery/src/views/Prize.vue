@@ -203,6 +203,7 @@ export default {
         
     }
     .zezo_pe{
+    	background: white;
         padding: 16px;
         overflow: hidden;
     }
@@ -213,5 +214,7 @@ export default {
         line-height: 46px;
         text-align: center;
         color: #4caf50;
+        font-weight: bold;
+        font-size: 24px;
     }
 </style>

@@ -14,16 +14,16 @@
 
     <!--            选号  走势图-->
     <nav class="clearfix">
-      <div class="firter">选号</div>
-      <div>走势图</div>
+      <div @click="table=true" :class="[table==true?'firter':'']">选号</div>
+      <div @click="table=false" :class="[table==false?'firter':'']">走势图</div>
     </nav>
 
     <!--                玩法    选项-->
 
-    <div class="content">
+    <div class="content" v-if="table==true">
       <div class="play clearfix">
         <div class="playing" @click="btn2()">玩法： {{lottery}} ✓</div>
-        <div class="list" v-if="type">
+        <div class="list" v-show="type==true">
           <div v-for="(i,index) in arr" @mouseover="num=index" :class="[num==index? 'col':'']" @mouseout="num=8"
                @click="btn1(index)">{{i}}
           </div>
@@ -41,7 +41,7 @@
               <p>猜中奖号码相加的和</p>
             </div>
             <div class="show-game">
-              <button v-for="(i,index) in count">
+              <button v-for="(i,index) in count" @click="btn3(index)" :class="[i.type==true?'btn_game':'']">
                 <div>
 
                   <span> {{i.figure}}<br>奖励{{i.award}}积分</span>
@@ -59,7 +59,7 @@
               <p>猜中豹子号 (三个响同号)</p>
             </div>
             <div class="show-game">
-              <button v-for="(i,index) in threenot">
+              <button v-for="(i,index) in threenot" @click="btn3(index)" :class="[i.type==true?'btn_game':'']">
                 <div>
                   <span> {{i.figure}}<br>奖励{{i.award}}积分</span>
                 </div>
@@ -71,7 +71,7 @@
               <p>猜中豹子号 (三个响同号)</p>
             </div>
             <div class="show-game">
-              <button v-for="(i,index) in threeall" class="one">
+              <button v-for="(i,index) in threeall" class="one" @click="btn4(index)" :class="[i.type==true?'btn_game':'one']">
                 <div>
                   <span> {{i.figure}}<br>任意一个豹子号开出即中{{i.award}}积分</span>
                 </div>
@@ -125,7 +125,7 @@
               <p>猜开奖的三个不同号码，奖励40积分</p>
             </div>
             <div class="show-game">
-              <button v-for="(i,index) in threedifflt">
+              <button v-for="(i,index) in threedifflt" @click="btn3(index)" :class="[i.type==true?'btn_game':'']">
                 <div>
                   <span> {{i.figure}}<br></span>
                 </div>
@@ -137,7 +137,7 @@
               <p>123,234,345,456，任一开出即中10积分</p>
             </div>
             <div class="show-game">
-              <button v-for="(i,index) in threemark" class="one">
+              <button v-for="(i,index) in threemark" class="one" @click="btn4(index)" :class="[i.type==true?'btn_game':'one']">
                 <div>
                   <span> {{i.figure}}<br>任意一个豹子号开出即中{{i.award}}积分</span>
                 </div>
@@ -153,7 +153,7 @@
               <p>猜开奖中的2个指定的不同号码，奖励8积分</p>
             </div>
             <div class="show-game">
-              <button v-for="(i,index) in twodifilt">
+              <button v-for="(i,index) in twodifilt" @click="btn3(index)" :class="[i.type==true?'btn_game':'']">
                 <div>
 
                   <span> {{i.figure}}</span>
@@ -169,8 +169,29 @@
         <div class="left">
           <p>共0注 <span>0模拟金</span></p>
         </div>
-        <div class="right">确定</div>
+        <div class="right" @click="btn5()">
+          确定
+        </div>
       </footer>
+    </div>
+
+<!-- 走势图-->
+    <div class="thred" v-if="table==false">
+      <div class="thead">
+        <ul class="clearfix" style="font-weight: bold">
+          <li class="max">期次</li>
+          <li class="max">开奖号</li>
+          <li class="max">大小</li>
+          <li class="max">单双</li>
+          <li class="min">1</li>
+          <li class="min">2</li>
+          <li class="min">3</li>
+          <li class="min">4</li>
+          <li class="min">5</li>
+          <li class="min">6</li>
+        </ul>
+
+      </div>
     </div>
 
   </div>
@@ -189,104 +210,243 @@
                 num: 8,
                 lottery: '和值',
                 type: false,
+                table: true,
                 // 和值
                 count: [
-                    {figure: 4, award: '40'},
-                    {figure: 5, award: '40'},
-                    {figure: 6, award: '40'},
-                    {figure: 7, award: '40'},
-                    {figure: 8, award: '40'},
-                    {figure: 9, award: '40'},
-                    {figure: 10, award: '80'},
-                    {figure: 11, award: '80'},
-                    {figure: 12, award: '80'},
-                    {figure: 13, award: '80'},
-                    {figure: 14, award: '80'},
-                    {figure: 15, award: '80'},
-                    {figure: 16, award: '80'},
-                    {figure: 17, award: '80'},
+                    {title: '和值', figure: 4, award: '40',type:false,},
+                    {title: '和值', figure: 5, award: '40',type:false,},
+                    {title: '和值', figure: 6, award: '40',type:false,},
+                    {title: '和值', figure: 7, award: '40',type:false,},
+                    {title: '和值', figure: 8, award: '40',type:false,},
+                    {title: '和值', figure: 9, award: '40',type:false,},
+                    {title: '和值', figure: 10, award: '80',type: false,},
+                    {title: '和值', figure: 11, award: '80',type: false,},
+                    {title: '和值', figure: 12, award: '80',type: false,},
+                    {title: '和值', figure: 13, award: '80',type: false,},
+                    {title: '和值', figure: 14, award: '80',type: false,},
+                    {title: '和值', figure: 15, award: '80',type: false,},
+                    {title: '和值', figure: 16, award: '80',type: false,},
+                    {title: '和值', figure: 17, award: '80',type: false,},
                 ],
-                count_num: [],
                 // 三同号
                 threenot: [
-                    {figure: 111, award: '240'},
-                    {figure: 222, award: '240'},
-                    {figure: 333, award: '240'},
-                    {figure: 444, award: '240'},
-                    {figure: 555, award: '240'},
-                    {figure: 666, award: '240'},
+                    {title: '三同号单选' ,figure: 111, award: '240',type: false,},
+                    {title: '三同号单选' ,figure: 222, award: '240',type: false,},
+                    {title: '三同号单选' ,figure: 333, award: '240',type: false,},
+                    {title: '三同号单选' ,figure: 444, award: '240',type: false,},
+                    {title: '三同号单选' ,figure: 555, award: '240',type: false,},
+                    {title: '三同号单选' ,figure: 666, award: '240',type: false,},
                 ],
                 threeall: [
-                    {figure: '三同号通选', award: '40'},
+                    {title: '三同号通选', figure: '三同号通选', award: '40',type:false,},
                 ],
 
                 // 二同号
                 twoRadio: [
-                    {figure: 11, award: '80'},
-                    {figure: 22, award: '80'},
-                    {figure: 33, award: '80'},
-                    {figure: 44, award: '80'},
-                    {figure: 55, award: '80'},
-                    {figure: 66, award: '80'},
-                    {figure: 1, award: '80'},
-                    {figure: 2, award: '80'},
-                    {figure: 3, award: '80'},
-                    {figure: 4, award: '80'},
-                    {figure: 5, award: '80'},
-                    {figure: 6, award: '80'},
+                    {figure: 11, award: '80',type: false,},
+                    {figure: 22, award: '80',type: false,},
+                    {figure: 33, award: '80',type: false,},
+                    {figure: 44, award: '80',type: false,},
+                    {figure: 55, award: '80',type: false,},
+                    {figure: 66, award: '80',type: false,},
+                    {figure: 1, award: '80',type: false,},
+                    {figure: 2, award: '80',type: false,},
+                    {figure: 3, award: '80',type: false,},
+                    {figure: 4, award: '80',type: false,},
+                    {figure: 5, award: '80',type: false,},
+                    {figure: 6, award: '80',type: false,},
                 ],
                 twoall: [
-                    {figure: '11*', award: '15'},
-                    {figure: '22*', award: '15'},
-                    {figure: '33*', award: '15'},
-                    {figure: '44*', award: '15'},
-                    {figure: '55*', award: '15'},
-                    {figure: '66*', award: '15'},
+                    {figure: '11*', award: '15',type: false,},
+                    {figure: '22*', award: '15',type: false,},
+                    {figure: '33*', award: '15',type: false,},
+                    {figure: '44*', award: '15',type: false,},
+                    {figure: '55*', award: '15',type: false,},
+                    {figure: '66*', award: '15',type: false,},
                 ],
                 // 三不同
                 threedifflt: [
-                    {figure: 1, award: '80'},
-                    {figure: 2, award: '80'},
-                    {figure: 3, award: '80'},
-                    {figure: 4, award: '80'},
-                    {figure: 5, award: '80'},
-                    {figure: 6, award: '80'},
+                    {title: '三不同号', figure: 1, award: '80',type:false,},
+                    {title: '三不同号', figure: 2, award: '80',type:false,},
+                    {title: '三不同号', figure: 3, award: '80',type:false,},
+                    {title: '三不同号', figure: 4, award: '80',type:false,},
+                    {title: '三不同号', figure: 5, award: '80',type:false,},
+                    {title: '三不同号', figure: 6, award: '80',type:false,},
                 ],
                 threemark: [
-                    {figure: '三连号通选', award: '10'},
+                    {title: '三连号通选', figure: '三连号通选', award: '10',type:false,},
                 ],
 
                 // 二不同
 
                 twodifilt: [
-                    {figure: 1, award: '8'},
-                    {figure: 2, award: '8'},
-                    {figure: 3, award: '8'},
-                    {figure: 4, award: '8'},
-                    {figure: 5, award: '8'},
-                    {figure: 6, award: '8'},
-                ]
+                    {title: '二不同号' ,figure: 1, award: '8',type:false,},
+                    {title: '二不同号' ,figure: 2, award: '8',type:false,},
+                    {title: '二不同号' ,figure: 3, award: '8',type:false,},
+                    {title: '二不同号' ,figure: 4, award: '8',type:false,},
+                    {title: '二不同号' ,figure: 5, award: '8',type:false,},
+                    {title: '二不同号' ,figure: 6, award: '8',type:false,},
+                ],
+
+                count_num: [],
+                up_num:[],
             }
         },
         methods: {
             btn1(a) {
                 this.lottery = this.arr[a]
                 this.type = false
+                this.count_num=[]
+                this.up_num=[]
+                this.count=[
+                    {figure: 4, award: '40',type:false,},
+                    {figure: 5, award: '40',type:false,},
+                    {figure: 6, award: '40',type:false,},
+                    {figure: 7, award: '40',type:false,},
+                    {figure: 8, award: '40',type:false,},
+                    {figure: 9, award: '40',type:false,},
+                    {figure: 10, award: '80',type: false,},
+                    {figure: 11, award: '80',type: false,},
+                    {figure: 12, award: '80',type: false,},
+                    {figure: 13, award: '80',type: false,},
+                    {figure: 14, award: '80',type: false,},
+                    {figure: 15, award: '80',type: false,},
+                    {figure: 16, award: '80',type: false,},
+                    {figure: 17, award: '80',type: false,},
+                ]//和值
+                this.threenot=[
+                    {figure: 111, award: '240',type: false,},
+                    {figure: 222, award: '240',type: false,},
+                    {figure: 333, award: '240',type: false,},
+                    {figure: 444, award: '240',type: false,},
+                    {figure: 555, award: '240',type: false,},
+                    {figure: 666, award: '240',type: false,},
+                ]//三同号
+                this.threeall=[
+                    {figure: '三同号通选', award: '40',type:false,},
+                ]//三同号通选
+                this.twoRadio=[
+                    {figure: 11, award: '80',type: false,},
+                    {figure: 22, award: '80',type: false,},
+                    {figure: 33, award: '80',type: false,},
+                    {figure: 44, award: '80',type: false,},
+                    {figure: 55, award: '80',type: false,},
+                    {figure: 66, award: '80',type: false,},
+                    {figure: 1, award: '80',type: false,},
+                    {figure: 2, award: '80',type: false,},
+                    {figure: 3, award: '80',type: false,},
+                    {figure: 4, award: '80',type: false,},
+                    {figure: 5, award: '80',type: false,},
+                    {figure: 6, award: '80',type: false,},
+                ]//二同号 上
+                this.twoall=[
+                    {figure: '11*', award: '15',type: false,},
+                    {figure: '22*', award: '15',type: false,},
+                    {figure: '33*', award: '15',type: false,},
+                    {figure: '44*', award: '15',type: false,},
+                    {figure: '55*', award: '15',type: false,},
+                    {figure: '66*', award: '15',type: false,},
+                ]//二同号  下
+                this.threedifflt=[
+                    {figure: 1, award: '80',type:false,},
+                    {figure: 2, award: '80',type:false,},
+                    {figure: 3, award: '80',type:false,},
+                    {figure: 4, award: '80',type:false,},
+                    {figure: 5, award: '80',type:false,},
+                    {figure: 6, award: '80',type:false,},
+                ]// 三不同
+                this.threemark=[
+                    {figure: '三连号通选', award: '10',type:false,},
+                ]//三不同通选
+                this.twodifilt=[
+                    {figure: 1, award: '8',type:false,},
+                    {figure: 2, award: '8',type:false,},
+                    {figure: 3, award: '8',type:false,},
+                    {figure: 4, award: '8',type:false,},
+                    {figure: 5, award: '8',type:false,},
+                    {figure: 6, award: '8',type:false,},
+                ]//二不同
             },
             btn2() {
                 this.type = true
             },
-        }
-    }
+            btn3(a){
+                if(this.lottery=='和值'){
+                    if(this.count[a].type==false){
+                        this.count[a].type=true
+                        this.$set(this.count_num,this.count_num.length,this.count[a])
+                    }else{
+                        this.count_num.splice(this.count_num.length-1,1)
+                        this.count[a].type=false
 
-    var Game = document.querySelectorAll('.show-game button')
-    console.log(Game)
-    Game.onclick = function () {
-        alert('1')
-    }
+                    }
+                }else if(this.lottery=='三同号'){
+                    if(this.threenot[a].type==false){
+                        this.threenot[a].type=true
+                        this.$set(this.count_num,this.count_num.length,this.threenot[a])
+                    }else{
+                        this.count_num.splice(this.count_num.length-1,1)
+                        this.threenot[a].type=false
+                    }
+                }else if(this.lottery=='二同号'){
+
+                }else if(this.lottery=='三不同'){
+                    if(this.threedifflt[a].type==false){
+                        this.threedifflt[a].type=true
+                        this.$set(this.count_num,this.count_num.length,this.threedifflt[a])
+                    }else{
+                        this.count_num.splice(this.count_num.length-1,1)
+                        this.threedifflt[a].type=false
+                    }
+                }else if(this.lottery=='二不同'){
+                    if(this.twodifilt[a].type==false){
+                        this.twodifilt[a].type=true
+                        this.$set(this.count_num,this.count_num.length,this.twodifilt[a])
+                    }else{
+                        this.count_num.splice(this.count_num.length-1,1)
+                        this.twodifilt[a].type=false
+                    }
+                }
+            },
+            btn4(a){
+                if(this.lottery=='三同号'){
+                    if(this.threeall[a].type==false){
+                        this.threeall[a].type=true
+                        this.$set(this.up_num,this.up_num.length,this.threeall[a])
+                    }else{
+                        this.up_num.splice(this.up_num.length-1,1)
+                        this.threeall[a].type=false
+                    }
+                }else if(this.lottery=='三不同'){
+                    if(this.threemark[a].type==false){
+                        this.threemark[a].type=true
+                        this.$set(this.up_num,this.up_num.length,this.threemark[a])
+                    }else{
+                        this.up_num.splice(this.up_num.length-1,1)
+                        this.threemark[a].type=false
+                    }
+                }
+            },
+            btn5(){
+                if(this.count_num.length!=0||this.up_num.length!=0){
+                    this.store()
+                    this.$router.push('/he')
+                    console.log(this.$store)
+                }else{
+                    alert('至少选择一注选号')
+                }
+            },
+            store(){
+                this.$store.commit('getcount_num',this.count_num)
+            }
+        }
+  }
 </script>
 
 <style>
+	p{
+		margin-bottom: 0px;
+	}
   .clearfix:after {
     content: '';
     display: block;
@@ -340,9 +500,11 @@
     color: #ffab00;
     text-align: center;
     box-sizing: border-box;
+    opacity: .7;
   }
 
   .firter {
+    opacity: 1;
     border-bottom: solid 2px #ffab00;
   }
 
@@ -366,6 +528,15 @@
     border-radius: 3px;
   }
 
+
+  .btn_game{
+    transition: all .5s !important;
+    border: solid 3px #ffab00 !important;
+    color: #ffab00 !important;
+  }
+
+
+
   .list {
     padding: 8px 0;
     background-color: #fff;
@@ -378,8 +549,8 @@
 
   .list > div {
     padding: 0 16px;
-    line-height: 48px;
-    font-size: 16px;
+    line-height: 50px;
+    font-size: 20px;
     font-weight: 400;
   }
 
@@ -481,7 +652,7 @@
 
   .show-game button {
     width: 130px;
-    height: 60px;
+    height: 80px;
     background-color: #08533c;
     outline: none;
     margin: 10px;
@@ -491,9 +662,41 @@
 
   .show-game button > div {
     margin: 0 3px;
+    font-size: 18px;
+    font-weight: bold;
   }
 
   .one {
     width: 100% !important;
+  }
+
+              /*走势图*/
+  .thred{
+    width: 100%;
+    overflow: hidden;
+  }
+  .thead{
+    width: 100%;
+  }
+  .thred ul{
+    width: 100%;
+  }
+  li{
+    box-sizing: border-box;
+    border-bottom: solid 1px #00422c;
+    border-right: solid 1px #00422c;
+    float: left;
+    list-style: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+    color: #48b892;
+    line-height:40px;
+  }
+  .max{
+  	width: 13%;
+  }
+  .min{
+    width: 8%;
   }
 </style>
