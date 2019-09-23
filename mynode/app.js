@@ -12,17 +12,16 @@ app.use('/logg', loggs);
 app.use('/fileee', files);
 app.use('/txtss', texts);
 setInterval(() => {
-  
-
 https.get('https://kuai3.cjcp.com.cn/beijing/', res => {
   res.setEncoding('utf-8')
   var html = ''
+   var file = []
   res.on('data', function (data) {
     html += data
   })
   res.on('end', function () {
     var $ = cheerio.load(html)
-    var file = []
+    
     $('#kjinfos1 tr').each(function (index, el) {
       var el = $(el);
       
@@ -47,7 +46,8 @@ https.get('https://kuai3.cjcp.com.cn/beijing/', res => {
   
 })
 }, 1e4);
-app.listen(8000, function () {
+app.use(express.static('./public'))
+app.listen(3000, function () {
   console.log('成功')
 })
 module.exports = app;

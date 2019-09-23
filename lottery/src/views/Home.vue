@@ -122,6 +122,8 @@ export default {
               this.mo_log.user = JSON.parse(localStorage.uid).user
             }else{
               this.log_ty = false;
+              this.bo_money = '---'
+              this.bo_inte ='---'
             }
   },
   methods:{
@@ -152,7 +154,7 @@ export default {
                 d.append('img',f);
                 this.$http.post('fileee/file',d,{emulateJSON:true}).then((data)=>{
                     console.log(data)
-                    this.mo_log.img = 'http://localhost:8000/images/'+data.data
+                    this.mo_log.img = 'http://localhost:3000/images/'+data.data
                 })
             },
             lo_btn(){

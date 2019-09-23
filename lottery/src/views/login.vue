@@ -42,7 +42,7 @@ export default{
                 d.append('img',f);
                 this.$http.post('fileee/file',d,{emulateJSON:true}).then((data)=>{
                     console.log(data)
-                    this.log.img = 'http://localhost:8000/images/'+data.data
+                    this.log.img = 'http://localhost:3000/images/'+data.data
                 })
             },
             lo_btn(){
