@@ -86,10 +86,12 @@ export default {
 }
 </script>
 <style>
+    p{
+        margin: 0;
+    }
     .prize{
         width: 100%;
         height: 100%;
-        background: white;
     }
     .banner{
         width: 100%;
@@ -128,7 +130,6 @@ export default {
         flex: 1 1 auto;
         text-align: center;
         line-height: 60px;
-        margin-bottom: 0px;
     }
     .fale{
         position: absolute;
@@ -180,7 +181,7 @@ export default {
          left: 0;
          background: rgba(0,0,0,.4);
          width: 100%;
-         height: 100%;
+         height: 160%;
          transition: .35s;
      }
      .zezo>div{
@@ -205,7 +206,6 @@ export default {
         
     }
     .zezo_pe{
-    	background: white;
         padding: 16px;
         overflow: hidden;
     }
@@ -216,7 +216,5 @@ export default {
         line-height: 46px;
         text-align: center;
         color: #4caf50;
-        font-weight: bold;
-        font-size: 24px;
     }
 </style>

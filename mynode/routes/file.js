@@ -9,9 +9,6 @@ const multer = require('multer');
 const router = express.Router();
 
 
-
-
-
 //头像
 router.use(multer({dest:'./public/images'}).any())
 router.post('/file',function(req,res){
