@@ -5,13 +5,18 @@
 			<button class="btn1" @click="btn1"><div class="btn"> + 继续选号</div></button>
 		</router-link>
 		<div class="printer"></div>
-		<div class="paper">
-			<div style="width:10%;text-align: center;" @click="btn">删除</div>
-			<div style="">
-				<div id="shuzi">5</div>
-				<div>注NaN模拟金</div>
-			</div>
+		<div class='paper' v-show="ddd=!ddd">
+			顶顶顶顶顶<router-link to='game'>返回</router-link>
 		</div>
+		<div class="paper" v-for="i,index in xiazhu" v-show="ddd=!ddd">
+			<div style="width:10%;text-align: center;" @click="btn(index)">删除</div>
+			<div>
+				<div id="shuzi"><span style="margin-left:5px;" v-for="a,index in i">{{a.figure}}</span></div>
+				<div>{{i[0].title}}{{i.length}}注模拟金</div>
+			</div>
+			{{ddd}}
+		</div>
+		
 
 			<div class="side"></div>
 		<div class="foor">
@@ -20,11 +25,12 @@
 		</div>
 		<div v-if="a" class="tan" @click="bt">
 			<div class="sss" :style="{'transform':'scale('+as+')'}" >
-				<div style="height: 80px;">
+				<div style="height: 60px;">
 					 共选中NaN注，合计NaN模拟金，确认支付吗？
 				</div>
-					<button class="btn1 b" @click="a=!a" @mouseover="ddd=!ddd" @mouseout="ddd=!ddd" :class="ddd?'active':''"><div>取消</div></button>
-					<button class="btn1 b" @click="a=!a" @mouseover="dd=!dd" @mouseout="dd=!dd" :class="dd?'active':''"><div>确定</div></button>
+					<button class="btn1 b" @click="a=!a"><div>取消</div></button>
+					<button class="btn1 b" @click="a=!a"><div>确定</div></button>
+					
 			</div>
 		</div>
 	</div>
@@ -37,16 +43,26 @@
 		data() {
 			return {
 				a:false,
-				ddd:false,
-				dd:false,
+				ddd:true,
 				s:1,
 				ss:1.2,
-				as:[]
+				as:[],
+				xiazhu:'',
 			}
 		},
+		created(){
+			this.xiazhu = this.$store.state.setcount_num
+			
+		},
+		/*computed(){
+			/*bt(){
+				
+			}*/
+		
 		methods: {
-			btn() {
-				console.log(1)
+			btn(i) {
+				this.xiazhu.splice(i,1)
+				this.ddd=!this.ddd
 			},
 			btn1() {
 				console.log(1) //跳回前一页
@@ -130,14 +146,17 @@
 	}
 
 	.btn {
-		padding: 5px;
+		padding:5px;
 		color: #3190E8;
 		border: 1px solid #3190E8;
 		background: #FFECEC;
+		font-size:24px;
+		border-radius:0;
 	}
 
 	.btn1 {
 		border-style: none;
+		margin-bottom: 10px;
 	}
 
 	.printer {
