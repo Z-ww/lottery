@@ -89,6 +89,7 @@ export default {
     .prize{
         width: 100%;
         height: 100%;
+        background: white;
     }
     .banner{
         width: 100%;
@@ -127,6 +128,7 @@ export default {
         flex: 1 1 auto;
         text-align: center;
         line-height: 60px;
+        margin-bottom: 0px;
     }
     .fale{
         position: absolute;
