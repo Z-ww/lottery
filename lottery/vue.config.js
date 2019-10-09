@@ -15,6 +15,11 @@ module.exports = {
             target: 'http://localhost:3000',//路由地址
             ws: true,//必须要写的
             changeOrigin: false//必须要写的
+          },
+          '/shopList': {//一级路由
+            target: 'http://localhost:3000',//路由地址
+            ws: true,//必须要写的
+            changeOrigin: false//必须要写的
           }
         }
     }

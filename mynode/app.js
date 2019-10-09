@@ -2,6 +2,7 @@ var express = require('express');
 var files = require('./routes/file');
 var loggs = require('./routes/users');
 var texts = require('./routes/texts');
+var shops = require('./routes/shop');
 const https = require('https')
 var cheerio = require('cherio')
 var fs = require('fs')
@@ -9,6 +10,7 @@ var app = express();
 
 app.use(express.urlencoded());
 app.use('/logg', loggs);  
+app.use('/shopList', shops);  
 app.use('/fileee', files);
 app.use('/txtss', texts);
 setInterval(() => {

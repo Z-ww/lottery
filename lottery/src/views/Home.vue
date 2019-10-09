@@ -25,12 +25,12 @@
            </div>
         </div>
         <div class="hd_bo clearfix">
-        	<router-link to='Prize'style="color: white;">
-        		<div class="bo_money"> <span>{{bo_money}}</span> 模拟金</div>
+        	<router-link to='Prize' style="color: white;">
+        		<div class="bo_money"> {{bo_money}} 模拟金</div>
         	</router-link>
             
             <router-link to='Prize' style="color: white;">
-            	<div class="bo_inte"> <span >{{bo_inte}}</span> 兑换</div>
+            	<div class="bo_inte"> <span >{{bo_inte}}积分</span> 兑换</div>
             </router-link>
         </div>
         
@@ -87,7 +87,10 @@ export default {
   components: {
   },
  mounted(){
-            this.$http.get('txtss/textt').then((data)=>{
+   this.$http.get('http://localhost:3000/shopList/shops').then((data)=>{
+     console.log(data)
+   })
+      this.$http.get('txtss/textt').then((data)=>{
       console.log(data)
     })
       },
