@@ -97,6 +97,7 @@
             </div>
             <div class="show-game">
               <p>不同号</p>
+
               <button v-for="(i,index) in twoRadio" v-if="index>=6" @click="btn3(index)" :class="[i.type==true?'btn_game':'']">
                 <div>
                   <span> {{i.figure}}</span>
@@ -143,6 +144,7 @@
                 </div>
               </button>
             </div>
+            {{up_num}}
           </div>
           <!--                                  二不同-->
 
@@ -195,7 +197,7 @@
       </div>
     </div>
 
-    <div style="height:39px;"></div>
+    <div style="height: 60px;"></div>
     <footer class="clearfix">
       <div class="left">
         <p>共{{fuch}}注 <span>{{integral}}模拟金</span></p>
@@ -471,44 +473,39 @@
 
             },
             btn5(){
-
-                if(this.lottery=='和值'){
-                    if(this.count_num.length!=0||this.up_num.length!=0){
-                        this.store()
+                if(this.lottery==='和值'){
+                    if(this.count_num.length!==0||this.up_num.length!==0){
+                        this.store();
                         this.$router.push('/he')
-                        console.log(this.$store)
                     }else{
                         alert('至少选择一注选号')
                     }
-                }else if(this.lottery=='三同号'){
-                    if(this.count_num.length!=0||this.up_num.length!=0){
-                        this.store()
+                }else if(this.lottery==='三同号'){
+                    if(this.count_num.length!==0||this.up_num.length!==0){
+                        this.store();
                         this.$router.push('/he')
-                        console.log(this.$store)
                     }else{
                         alert('至少选择一注选号')
                     }
-                }else if(this.lottery=='三不同'){
-                    if(this.count_num.length>=3||this.up_num.length!=0){
-                        this.store()
+                }else if(this.lottery==='三不同'){
+                    if(this.count_num.length>=3||this.up_num.length!==0){
+                        this.store();
                         this.$router.push('/he')
-                        console.log(this.$store)
                     }else{
                         alert('至少选择一注选号')
                     }
-                }else if(this.lottery=='二不同'){
-                    if(this.count_num.length>=2||this.up_num.length!=0){
-                        this.store()
+                }else if(this.lottery==='二不同'){
+                    if(this.count_num.length>=2||this.up_num.length!==0){
+                        this.store();
                         this.$router.push('/he')
-                        console.log(this.$store)
                     }else{
                         alert('至少选择一注选号')
                     }
                 }
             },
             store(){
-                this.$store.commit('getcount_num',this.count_num)
-                this.$store.commit('getup_num',this.up_num)
+                this.$store.commit('getup_num',this.up_num);
+                this.$store.commit('getcount_num',this.count_num);
             }
         },
         mounted(){

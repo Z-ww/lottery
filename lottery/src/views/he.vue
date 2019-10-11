@@ -5,28 +5,26 @@
 			<button class="btn1" @click="btn1"><div class="btn"> + 继续选号</div></button>
 		</router-link>
 		<div class="printer"></div>
-		<div class='paper' v-show="ddd=!ddd">
-			顶顶顶顶顶<router-link to='game'>返回</router-link>
-		</div>
-		<div class="paper" v-for="i,index in xiazhu" v-show="ddd=!ddd">
+		<div class="paper" v-for="i,index in xiazhu">
 			<div style="width:10%;text-align: center;" @click="btn(index)">删除</div>
 			<div>
 				<div id="shuzi"><span style="margin-left:5px;" v-for="a,index in i">{{a.figure}}</span></div>
-				<div>{{i[0].title}}{{i.length}}注模拟金</div>
+				<div>{{i.title}}{{i.figure}}注{{len*2}}模拟金</div>
+				<div id="">
+					{{i.length}}
+				</div>
 			</div>
-			{{ddd}}
 		</div>
-		
-
 			<div class="side"></div>
+			
 		<div class="foor">
-			<div class="foor-left">共计8注</div>
+			<div class="foor-left">共计{{bt1/2}}注</div>
 			<div class="foor-rigth" @click="btt()">投注</div>
 		</div>
 		<div v-if="a" class="tan" @click="bt">
 			<div class="sss" :style="{'transform':'scale('+as+')'}" >
 				<div style="height: 60px;">
-					 共选中NaN注，合计NaN模拟金，确认支付吗？
+					 共选中{{bt1/2}}注，合计{{bt1}}模拟金，确认支付吗？
 				</div>
 					<button class="btn1 b" @click="a=!a"><div>取消</div></button>
 					<button class="btn1 b" @click="a=!a"><div>确定</div></button>
@@ -48,20 +46,27 @@
 				ss:1.2,
 				as:[],
 				xiazhu:'',
+				len:','
 			}
 		},
 		created(){
 			this.xiazhu = this.$store.state.setcount_num
-			
+			this.len=this.xiazhu.length
+			console.log(this.xiazhu)
 		},
-		/*computed(){
-			/*bt(){
-				
-			}*/
-		
+		computed:{
+			bt1(){
+				var a = '';
+				this.xiazhu.forEach((a1,b)=>{
+					a =a1.length + Number(a)
+				})
+				return a * 2
+			}
+		},
 		methods: {
 			btn(i) {
 				this.xiazhu.splice(i,1)
+				
 				this.ddd=!this.ddd
 			},
 			btn1() {

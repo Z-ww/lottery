@@ -193,7 +193,7 @@ export default {
          left: 50%;
          top: 50%;
          margin-left: -210px;
-         margin-top: -90px;
+         margin-top: -290px;
          font-size: 20px;
          transition: .35s;
      }
