@@ -13,7 +13,7 @@ router.post('/usee', function(req, res) {
   }
   if(key_type){
     js.mouny = 1000;
-    js.bo_inte = 0;
+    js.bo_inte = 1000;
     var vip = eval(fs.readFileSync('./login.txt','utf8'))
     var vip_type=true;
     for(var i = 0;i<vip.length;i++){
